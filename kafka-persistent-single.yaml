@@ -30,24 +30,10 @@ spec:
       min.insync.replicas: 1
       inter.broker.protocol.version: "3.7"
     storage:
-      type: jbod
-      volumes:
-      - id: 0
-        type: persistent-claim
-        size: 1Gi
-        deleteClaim: false
-        class: local-storage
-    template:
-      pod:
-        affinity:
-          nodeAffinity:
-            requiredDuringSchedulingIgnoredDuringExecution:
-              nodeSelectorTerms:
-                - matchExpressions:
-                  - key: topology.kubernetes.io/zone
-                    operator: In
-                    values:
-                    - node2
+      type: persistent-claim
+      size: 1Gi
+      deleteClaim: false
+      class: local-storage
   zookeeper:
     replicas: 1
     resources:
@@ -62,17 +48,6 @@ spec:
       size: 1Gi
       deleteClaim: false
       class: local-storage
-    template:
-      pod:
-        affinity:
-          nodeAffinity:
-            requiredDuringSchedulingIgnoredDuringExecution:
-              nodeSelectorTerms:
-                - matchExpressions:
-                  - key: topology.kubernetes.io/zone
-                    operator: In
-                    values:
-                    - node1
   entityOperator:
     topicOperator: {}
     userOperator: {}
