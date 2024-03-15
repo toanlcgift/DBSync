@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: pvc-prod-zookeeper
+  name: data-my-cluster-zookeeper-0
   labels:
     resource/type: pvc
   namespace: kafka
@@ -18,7 +18,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: pvc-prod-kafka
+  name: data-my-cluster-kafka-0
   labels:
     resource/type: pvc
   namespace: kafka
