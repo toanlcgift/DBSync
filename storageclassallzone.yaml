@@ -1,0 +1,8 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: all-zones
+provisioner: kubernetes.io/my-storage
+parameters:
+  type: ssd
+volumeBindingMode: WaitForFirstConsumer
