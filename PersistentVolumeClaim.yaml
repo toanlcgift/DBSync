@@ -4,7 +4,7 @@ metadata:
   name: pvc-prod-zookeeper
   labels:
     resource/type: pvc
-  namespace: strimzi
+  namespace: kafka
 spec:
   storageClassName: local-storage
   resources:
@@ -21,7 +21,7 @@ metadata:
   name: pvc-prod-kafka
   labels:
     resource/type: pvc
-  namespace: strimzi
+  namespace: kafka
 spec:
   storageClassName: local-storage
   resources:
