@@ -1,17 +1,42 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: pv1
+  name: zookeeper
+  labels:
+    resource/type: pv
 spec:
-  storageClassName: all-zones
   capacity:
-    storage: 1Gi
-  volumeMode: Filesystem
+    storage: 2Gi
   accessModes:
   - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
+  storageClassName: all-zones
   local:
-    path: /mnt/data
+    path: /mnt/zookeeper
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - node1
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: kafka
+  labels:
+    resource/type: pv
+spec:
+  capacity:
+    storage: 2Gi
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: all-zones
+  local:
+    path: /mnt/kafka
   nodeAffinity:
     required:
       nodeSelectorTerms:
