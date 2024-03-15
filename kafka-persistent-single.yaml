@@ -36,7 +36,7 @@ spec:
         type: persistent-claim
         size: 1Gi
         deleteClaim: false
-        class: all-zones
+        class: local-storage
     template:
       pod:
         affinity:
@@ -61,7 +61,7 @@ spec:
       type: persistent-claim
       size: 1Gi
       deleteClaim: false
-      class: all-zones
+      class: local-storage
     template:
       pod:
         affinity:
