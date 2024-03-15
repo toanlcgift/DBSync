@@ -3,6 +3,7 @@ kind: PersistentVolume
 metadata:
   name: zookeeper
   labels:
+    name: zookeeper
     resource/type: pv
 spec:
   capacity:
@@ -27,6 +28,7 @@ kind: PersistentVolume
 metadata:
   name: kafka
   labels:
+    name: kafka
     resource/type: pv
 spec:
   capacity:
