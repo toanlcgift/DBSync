@@ -34,6 +34,17 @@ spec:
       size: 1Gi
       deleteClaim: false
       class: local-storage
+    template:
+      pod:
+        affinity:
+          nodeAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              nodeSelectorTerms:
+                - matchExpressions:
+                  - key: topology.kubernetes.io/zone
+                    operator: In
+                    values:
+                    - node1
   zookeeper:
     replicas: 1
     resources:
@@ -48,6 +59,17 @@ spec:
       size: 1Gi
       deleteClaim: false
       class: local-storage
+    template:
+      pod:
+        affinity:
+          nodeAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              nodeSelectorTerms:
+                - matchExpressions:
+                  - key: topology.kubernetes.io/zone
+                    operator: In
+                    values:
+                    - node1
   entityOperator:
     topicOperator: {}
     userOperator: {}
