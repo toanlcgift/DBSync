@@ -84,7 +84,7 @@ sudo systemctl enable --now cri-docker.socket
 ### Edit hostname
 
 ``` bash
-sudo tee /etc/hosts <<EOF
+sudo tee -a /etc/hosts <<EOF
 192.168.123.123 localk8s.com
 EOF
 ```
