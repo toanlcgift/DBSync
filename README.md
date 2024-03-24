@@ -9,8 +9,8 @@ Sync postgresql to postgresql using debezium and kafka connect, HA Kubernetes cl
 
 K8s Node               | OS                              | RAM      | Total Processor Cores      | local IP | DNS |
 -----------------------|-------------------------------------------|-----------------------------|-------------------------|-------------------------|-------------------------|
-master             | `Ubuntu 22.04 LTS` | 4GB | 2 | 192.168.123.123 | localk8s.com |
-node1             | `Ubuntu 22.04 LTS` | 4GB | 2 | 192.168.123.124 |  localnodek8s.com |
+master             | `Ubuntu 22.04 x86_64 LTS` | 4GB | 2 | 192.168.123.123 | localk8s.com |
+node1             | `Ubuntu 22.04 x86_64 LTS` | 4GB | 2 | 192.168.123.124 |  localnodek8s.com |
 
 ### Install kubelet, kubeadm, kubectl
 
