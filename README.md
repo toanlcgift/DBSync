@@ -99,5 +99,40 @@ sudo kubeadm join localk8s.com:6443 --token {token-getting-from-kubeadm-init-ste
 #node1 End
 ```
 
+### Setup Calico network
+
+``` bash
+#Master Only Start
+kubectl create -f tigera-operator.yaml
+kubectl create -f custom-resources.yaml
+#Master Only End
+```
+### Setup Kafka cluster
+
+``` bash
+#Master Only Start
+kubectl create namespace kafka
+kubectl create -f storageclass.yaml
+kubectl create -f persistentvolumn.yaml -n kafka
+kubectl create -f PersistentVolumeClaim.yaml -n kafka
+kubectl create -f 'https://strimzi.io/install/latest?namespace=kafka' -n kafka
+kubectl create -f kafka-persistent-single.yaml -n kafka
+#Master Only End
+```
+
+### Testing kafka - create producer
+
+``` bash
+#Master Only Start
+kubectl -n kafka run kafka-producer -ti --image=quay.io/strimzi/kafka:0.40.0-kafka-3.7.0 --rm=true --restart=Never -- bin/kafka-console-producer.sh --bootstrap-server my-cluster-kafka-bootstrap:9092 --topic my-topic
+#Master Only End
+```
+### Testing kafka - create cosumer
+``` bash
+#Master Only Start
+kubectl -n kafka run kafka-consumer -ti --image=quay.io/strimzi/kafka:0.40.0-kafka-3.7.0 --rm=true --restart=Never -- bin/kafka-console-consumer.sh --bootstrap-server my-cluster-kafka-bootstrap:9092 --topic my-topic --from-beginning
+#Master Only End
+```
+
 ## Deploy postgresql
 ## Deploy debezium
