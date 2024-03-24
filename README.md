@@ -81,6 +81,14 @@ sudo systemctl enable cri-docker.service
 sudo systemctl enable --now cri-docker.socket
 ```
 
+### Edit hostname
+
+``` bash
+sudo tee /etc/hosts <<EOF
+192.168.123.123 localk8s.com
+EOF
+```
+
 ### Config & run kubernetes
 
 ``` bash
