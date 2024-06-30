@@ -31,3 +31,20 @@ spec:
   accessModes:
     - ReadWriteOnce
   volumeName: kafka
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: data-mysql-claim
+  labels:
+    resource/type: pvc
+  namespace: kafka
+spec:
+  storageClassName: local-storage
+  resources:
+    requests:
+      storage: 2Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  volumeName: mysql

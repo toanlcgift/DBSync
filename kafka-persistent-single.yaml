@@ -44,7 +44,7 @@ spec:
                   - key: kubernetes.io/hostname
                     operator: In
                     values:
-                    - node1
+                    - master
   zookeeper:
     replicas: 1
     resources:
@@ -69,7 +69,7 @@ spec:
                   - key: kubernetes.io/hostname
                     operator: In
                     values:
-                    - node1
+                    - master
   entityOperator:
     topicOperator: {}
     userOperator: {}
